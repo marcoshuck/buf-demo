@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package employees.v1;
+
+import "google/api/annotations.proto";
+import "employees/v1/employee.proto";
+
+message ListEmployeesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListEmployeesResponse {
+  repeated Employee employees = 1;
+  string next_page_token = 2;
+}
+
+service EmployeeReader {
+  rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse) {
+    option (google.api.http) = {
+      get: "/v1/employees";
+    };
+  }
+}

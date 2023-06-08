@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package employees.v1;
+
+import "google/api/annotations.proto";
+import "employees/v1/employee.proto";
+
+message CreateEmployeeRequest {
+  Employee employee = 1;
+}
+
+message CreateEmployeeResponse {
+  Employee employee = 1;
+}
+
+service EmployeeWriter {
+  rpc CreateEmployee(CreateEmployeeRequest) returns (CreateEmployeeResponse) {
+    option (google.api.http) = {
+      post: "/v1/employees";
+    };
+  }
+}
