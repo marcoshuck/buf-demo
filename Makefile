@@ -5,4 +5,4 @@ build:
 clean:
 	@echo "Removing auto-generated code and docs"
 	find . -iname "*.pb.*" -delete
-	rm -rf /docs
+	rm -rf ./docs
